@@ -14,7 +14,6 @@ const inte = setInterval(() => {
 
 }, 1000);
 
-
 //running the code every second
 
 
