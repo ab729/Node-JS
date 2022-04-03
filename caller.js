@@ -10,7 +10,6 @@ console.log(call.students, call.name);
 //this code do the same as the prevois one but i a diffrent syntax
 
 
-
 console.log(call);
 //this command will print the commands in the page test then the element that was exported from it
 
