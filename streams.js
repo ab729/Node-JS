@@ -4,7 +4,6 @@ const readStream = fs.createReadStream('./docs/map.txt', {encoding: 'utf8'});
 const writeStream = fs.createWriteStream('./docs/map2.txt');
 
 
-
 readStream.on('data', (chunk) => {
     console.log('-----new chunk-----');
     console.log(chunk);
