@@ -25,7 +25,6 @@ fs.writeFile('./docs/table2.txt', "whats'up" , () => {
     console.log("Succesful");
 });
 
-
 // directories
 if(!fs.existsSync('./docs/table3.txt')) {
  fs.mkdir('./docs/table3.txt', (err) => {
