@@ -4,7 +4,6 @@ const students = ['Ahmed' , 'yusif' , 'Ali'];
 console.log (name);
 // printing name
 
-
 const greet = (name)=>
 {
     console.log(`hello, ${name}`);
