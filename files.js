@@ -45,7 +45,6 @@ if(!fs.existsSync('./docs/table3.txt')) {
         }
 
 
-
 // deleting files
 if(fs.existsSync('./docs/delete.txt')) {
     fs.unlink('./docs/delete.txt', () => {
