@@ -1,21 +1,83 @@
 const express = require('express');
+const { path } = require('express/lib/application');
 const { redirect, send } = require('express/lib/response');
 const res = require('express/lib/response');
-const { create } = require('lodash');
+const { create, result } = require('lodash');
+const morgan = require('morgan');
+
 
 
 //express app
 const app = express();
+const morgam = require('morgan');
+const mongoose = require('mongoose');
+const Blog = require('./models/blog.js')
+
+//connect to mongo db
+const web = 'mongodb+srv://nodeuser:node1234@cluster0.4zxou.mongodb.net/node_users?retryWrites=true&w=majority';
+mongoose.connect(web, { useNewUrlParser: true, useUnifiedTopology: true })
+ .then((result) => console.log('connecting to Mongo DB succesed'), app.listen(3000))
+ .catch((err) => console.log(err));
 
 //register view engine
 app.set('view engine', 'ejs');
-app.set('views', 'ejs views');
+app.set('views', 'ejs views'); 
 // this code used to open a folder that you keep views in
 
 
-//listen for requests
+// app.listen(3000);
+//listen for requests 
 
-app.listen(3000);
+app.use(express.static('public'));
+app.use(morgan('dev'));
+
+
+// app.use((req, res, next) =>{
+//     console.log('new request made');
+//     console.log('host: ',req.hostname);
+//     console.log('path: ',req.path);
+//     console.log('method: ',req.method);
+//     next();
+// });
+//the prevois code is an example to the middleware
+
+app.get('/add-blog', (req, res)=> {
+    const blog = new Blog({
+        title: 'newblog 2',
+        snippet: 'about the new blog',
+        body: 'details about the blog'
+    });
+
+    blog.save()
+    .then((result) => {
+            res.send(result)
+    })
+    .catch((err) =>{
+        console.log(err);
+    });
+});
+
+app.get('/all-blogs', (req, res) =>{
+    Blog.find()
+    .then((result) =>{
+        res.send(result)
+    })
+    .catch((err) => {
+        console.log(err);
+    })
+})
+
+app.get('/single-blog', (req, res) =>{
+    Blog.findById('624af3cdcd5b4b9cc5a38a2b')
+    .then((result) => {
+        res.send(result)
+    })
+    .catch((err) => {
+        console.log(err);
+    });
+});
+
+
 app.get('/', (req, res) => {
 
     //res.send('<p>home page</p>');
