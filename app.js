@@ -8,6 +8,9 @@ const app = express();
 
 //register view engine
 app.set('view engine', 'ejs');
+app.set('views', 'ejs views');
+// this code used to open a folder that you keep views in
+
 
 //listen for requests
 
@@ -15,7 +18,9 @@ app.listen(3000);
 app.get('/', (req, res) => {
 
     //res.send('<p>home page</p>');
-    res.sendFile('./views/index.html', { root: __dirname});
+    // res.sendFile('./views/index.html', { root: __dirname});
+    //as long as we used ejs method instead of noraml html we change to render method
+        res.render('index');
 });
 
 app.get('/main', (req, res) =>{
