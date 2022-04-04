@@ -1,9 +1,5 @@
 <html>
-<head>
-    <meta charset = "UTF-8">
-    <meta name="viewport" content="width = device-width, initial-scale=1.0">
-    <title><%= title%></title>
-</head>
+<%- include('./partials/header.ejs')  %> 
 <body>
     
     <nav>
@@ -22,5 +18,7 @@
     <div class="Not found content">
         Error 404 - page not found :)
     </div>
+    <%- include('./partials/footer.ejs')  %> 
+
 </body>
 </html>
