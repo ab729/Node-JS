@@ -5,20 +5,8 @@
     <title>Test Blog | <%= title %></title>
 </head>
 <body>
-    
-    <nav>
-        <div class="site-title">
-            <a href="/"><h1>blogs veresion 3.0</h1></a>
-            <p>A Node JS website test</p>
-        </div>
-        <ul>
-            <li><a href="/">Blogs</a></li>
-            <li><a href="about">About</a></li>
-            <li><a href="/blogs/create">New Blog</a></li>
 
-        </ul>
-    </nav>
-
+    <%- include('./partials/nav.ejs')  %> 
     <div class="blogs content">
         <h2>All blogs</h2>
 
@@ -27,7 +15,12 @@
             <h3 class="title"><%= blog.title %> </h3>
             <p class="snippet"><%= blog.snippet %> </p>
             <%  }) %>
-            <% } %> 
+            <% } else{ %>
+                    <p>There are no Blogs to display...</p>
+                
+        <%    } %> 
+
+
     </div>
 </body>
 </html>
